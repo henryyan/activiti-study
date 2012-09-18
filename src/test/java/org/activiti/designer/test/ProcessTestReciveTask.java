@@ -60,4 +60,5 @@ public class ProcessTestReciveTask {
 		long count = historyService.createHistoricProcessInstanceQuery().finished().count();
 		assertEquals(1, count);
 	}
+	
 }

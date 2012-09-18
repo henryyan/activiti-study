@@ -7,7 +7,12 @@
     <receiveTask id="receivetask1" name="Receive Task"></receiveTask>
     <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="businessruletask1"></sequenceFlow>
     <sequenceFlow id="flow2" name="" sourceRef="receivetask1" targetRef="endevent1"></sequenceFlow>
-    <sequenceFlow id="flow3" name="" sourceRef="businessruletask1" targetRef="receivetask1"></sequenceFlow>
+    <sequenceFlow id="flow3" name="" sourceRef="businessruletask1" targetRef="receivetask1">
+      <extensionElements>
+        <activiti:executionListener event="take" expression="${sss}"></activiti:executionListener>
+        <activiti:executionListener event="take" delegateExpression="${sss.ss}"></activiti:executionListener>
+      </extensionElements>
+    </sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_drools">
     <bpmndi:BPMNPlane bpmnElement="drools" id="BPMNPlane_drools">
@@ -34,6 +39,9 @@
       <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
         <omgdi:waypoint x="225" y="147"></omgdi:waypoint>
         <omgdi:waypoint x="283" y="147"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="12" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

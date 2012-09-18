@@ -15,9 +15,9 @@ import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ProcessTestMultiInstance {
+public class ProcessTestMultiInstanceBreakOnConditions {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiInstance.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiInstanceBreakOnConditions.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
@@ -25,18 +25,22 @@ public class ProcessTestMultiInstance {
 	@Test
 	public void startProcess() throws Exception {
 		RepositoryService repositoryService = activitiRule.getRepositoryService();
-		repositoryService.createDeployment().addInputStream("process1.bpmn20.xml", new FileInputStream(filename)).deploy();
+		repositoryService.createDeployment()
+				.addInputStream("MultiInstanceBreakOnConditions.bpmn20.xml", new FileInputStream(filename)).deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
 		Map<String, Object> variableMap = new HashMap<String, Object>();
-		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("process1", variableMap);
+		variableMap.put("name", "Activiti");
+		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("MultiInstanceBreakOnConditions", variableMap);
 		assertNotNull(processInstance.getId());
 		System.out.println("id " + processInstance.getId() + " " + processInstance.getProcessDefinitionId());
 		TaskService taskService = activitiRule.getTaskService();
-		assertEquals(3, taskService.createTaskQuery().taskAssignee("henryyan").count());
-		Task task = taskService.createTaskQuery().taskAssignee("henryyan").listPage(0, 1).get(0);
+		Task task = taskService.createTaskQuery().singleResult();
 		taskService.complete(task.getId());
 		
-		task = taskService.createTaskQuery().taskAssignee("henryyan").listPage(0, 1).get(0);
+		task = taskService.createTaskQuery().singleResult();
 		taskService.complete(task.getId());
+		
+		long count = activitiRule.getHistoryService().createHistoricProcessInstanceQuery().finished().count();
+		assertEquals(1, count);
 	}
 }
