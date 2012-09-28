@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions joinwork:updateTime="1348671359537" exporter="Joinwork Process Studio" exporterVersion="3.1.0" targetNamespace="http://www.mycompany.com/NewBPMN" id="NewBPMN" name="Definitions" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:joinwork="http://www.joinwork.net/">
+  <process id="Process_1" name="Process_1">
+    <startEvent id="Start_1"/>
+    <endEvent id="End_1" name="汇款成功">
+      <messageEventDefinition id="EventDef_6"/>
+    </endEvent>
+    <transaction id="Sub_Process_1" name="付款（事务）子流程">
+      <startEvent id="Start_2"/>
+      <serviceTask id="Task_2" name="从付款方扣除金额"/>
+      <serviceTask id="Task_3" name="向受款方账户汇款"/>
+      <endEvent id="End_2"/>
+      <boundaryEvent id="Event_1" name="捕获取消结束事件" attachedToRef="Task_2">
+        <compensateEventDefinition id="EventDef_1"/>
+      </boundaryEvent>
+      <boundaryEvent id="Event_2" attachedToRef="Task_3">
+        <errorEventDefinition id="EventDef_2"/>
+      </boundaryEvent>
+      <endEvent id="End_3" name="发生异常取消本次操作">
+        <cancelEventDefinition id="EventDef_4"/>
+      </endEvent>
+      <task id="Task_4" name="退回已扣金额" isForCompensation="true"/>
+      <sequenceFlow id="SequenceFlow_4" sourceRef="Start_2" targetRef="Task_2"/>
+      <sequenceFlow id="SequenceFlow_5" sourceRef="Task_2" targetRef="Task_3"/>
+      <sequenceFlow id="SequenceFlow_6" sourceRef="Task_3" targetRef="End_2"/>
+      <sequenceFlow id="SequenceFlow_12" sourceRef="Event_2" targetRef="End_3"/>
+      <association id="Association_1" sourceRef="Event_1" targetRef="Task_4" associationDirection="One"/>
+    </transaction>
+    <boundaryEvent id="Event_3" attachedToRef="Sub_Process_1">
+      <cancelEventDefinition id="EventDef_3"/>
+    </boundaryEvent>
+    <boundaryEvent id="Event_4" name="处理异常" attachedToRef="Sub_Process_1">
+      <errorEventDefinition id="EventDef_5"/>
+    </boundaryEvent>
+    <serviceTask id="Task_5" name="记录系统异常信息"/>
+    <serviceTask id="Task_6" name="通知客户汇款失败"/>
+    <endEvent id="End_4"/>
+    <endEvent id="End_5"/>
+    <userTask id="Task_1" name="提交汇款信息"/>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="Sub_Process_1" targetRef="End_1"/>
+    <sequenceFlow id="SequenceFlow_8" sourceRef="Event_4" targetRef="Task_5"/>
+    <sequenceFlow id="SequenceFlow_9" sourceRef="Event_3" targetRef="Task_6"/>
+    <sequenceFlow id="SequenceFlow_10" sourceRef="Task_5" targetRef="End_4"/>
+    <sequenceFlow id="SequenceFlow_11" sourceRef="Task_6" targetRef="End_5"/>
+    <sequenceFlow id="SequenceFlow_1" sourceRef="Start_1" targetRef="Task_1"/>
+    <sequenceFlow id="SequenceFlow_3" sourceRef="Task_1" targetRef="Sub_Process_1"/>
+  </process>
+  <bpmndi:BPMNDiagram id="ProcessDiagram_1" name="ProcessDiagram_1" resolution="72">
+    <bpmndi:BPMNPlane id="ProcessDiagram_1_plane" bpmnElement="Process_1">
+      <bpmndi:BPMNShape bpmnElement="Start_1" id="Shape_1">
+        <dc:Bounds height="22" width="22" x="292" y="111"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="End_1" id="Shape_3">
+        <dc:Bounds height="22" width="22" x="944" y="203"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="Connector_2">
+        <di:waypoint x="896" y="214"/>
+        <di:waypoint x="943" y="214"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Sub_Process_1" id="Shape_4" isExpanded="true">
+        <dc:Bounds height="206" width="504" x="391" y="91"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Start_2" id="Shape_5">
+        <dc:Bounds height="22" width="22" x="414" y="130"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Task_2" id="Shape_6" joinwork:fillColor="16777215">
+        <dc:Bounds height="50" width="113" x="476" y="120"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_4" id="Connector_4">
+        <di:waypoint x="848" y="252"/>
+        <di:waypoint x="886" y="252"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Task_3" id="Shape_7">
+        <dc:Bounds height="57" width="118" x="648" y="112"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" id="Connector_5">
+        <di:waypoint x="1001" y="255.5"/>
+        <di:waypoint x="1058" y="255.5"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="End_2" id="Shape_8">
+        <dc:Bounds height="22" width="22" x="826" y="134"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_6" id="Connector_6">
+        <di:waypoint x="1178" y="256"/>
+        <di:waypoint x="1236" y="256"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Event_1" id="Shape_9">
+        <dc:Bounds height="22" width="22" x="498" y="159"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_2" id="Shape_11">
+        <dc:Bounds height="22" width="22" x="696" y="158"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="End_3" id="Shape_12">
+        <dc:Bounds height="22" width="22" x="756" y="212"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12" id="Connector_8">
+        <di:waypoint x="1118" y="292"/>
+        <di:waypoint x="1166" y="334"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Task_4" id="Shape_10">
+        <dc:Bounds height="50" width="80" x="539" y="198"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Association_1" id="Connector_7">
+        <di:waypoint x="920" y="293"/>
+        <di:waypoint x="949" y="334"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Event_3" id="Shape_13">
+        <dc:Bounds height="22" width="22" x="730" y="286"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_4" id="Shape_14">
+        <dc:Bounds height="22" width="22" x="444" y="286"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Task_5" id="Shape_15">
+        <dc:Bounds height="52" width="102" x="476" y="353"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_8" id="Connector_9">
+        <di:waypoint x="455" y="309"/>
+        <di:waypoint x="527" y="352"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Task_6" id="Shape_16">
+        <dc:Bounds height="50" width="80" x="775" y="343"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="Connector_10">
+        <di:waypoint x="741" y="309"/>
+        <di:waypoint x="774" y="368"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="End_4" id="Shape_17">
+        <dc:Bounds height="22" width="22" x="606" y="367"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_10" id="Connector_11">
+        <di:waypoint x="579" y="378"/>
+        <di:waypoint x="605" y="378"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="End_5" id="Shape_18">
+        <dc:Bounds height="22" width="22" x="905" y="357"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_11" id="Connector_12">
+        <di:waypoint x="856" y="368"/>
+        <di:waypoint x="904" y="368"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Task_1" id="Shape_2">
+        <dc:Bounds height="50" width="80" x="263" y="189"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1" id="Connector_1">
+        <di:waypoint x="303" y="134"/>
+        <di:waypoint x="303" y="188"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="Connector_3">
+        <di:waypoint x="344" y="214"/>
+        <di:waypoint x="358" y="214"/>
+        <di:waypoint x="367" y="214"/>
+        <di:waypoint x="390" y="214"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

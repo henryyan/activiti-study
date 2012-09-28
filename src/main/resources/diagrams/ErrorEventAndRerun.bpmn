@@ -6,7 +6,7 @@
     <endEvent id="endevent1" name="ErrorEnd">
       <errorEventDefinition errorRef="AAA"></errorEventDefinition>
     </endEvent>
-    <subProcess id="eventsubprocess1" name="Event sub Process" triggeredByEvent="true">
+    <subProcess id="eventsubprocess1" name="这样是不允许的！！！" triggeredByEvent="true">
       <startEvent id="errorstartevent1" name="Error start">
         <errorEventDefinition errorRef="AAA"></errorEventDefinition>
       </startEvent>

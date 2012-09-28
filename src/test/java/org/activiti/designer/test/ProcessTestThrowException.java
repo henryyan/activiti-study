@@ -23,7 +23,7 @@ public class ProcessTestThrowException {
 	public ActivitiRule activitiRule = new ActivitiRule();
 
 	@Test
-	public void startProcess() throws Exception {
+	public void startProcess() throws Throwable {
 		RepositoryService repositoryService = activitiRule.getRepositoryService();
 		repositoryService.createDeployment().addInputStream("ThrowException.bpmn20.xml", new FileInputStream(filename)).deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
@@ -38,8 +38,17 @@ public class ProcessTestThrowException {
 		try {
 			taskService.complete(task.getId());
 		} catch (RuntimeException e) {
+			
 			System.out.println("我捕获到了" + e.getMessage());
-			//e.printStackTrace();
+			
+			Throwable cause = e.getCause();
+			System.out.println(cause);
+			throw cause;
+			
+//			StackTraceElement[] stackTrace = e.getStackTrace();
+//			for (StackTraceElement stackTraceElement : stackTrace) {
+//				//System.out.println(stackTraceElement);
+//			}
 		}
 	}
 }
