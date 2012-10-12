@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="InclusiveGatewayDefalutWay" name="InclusiveGatewayDefalutWay">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <inclusiveGateway id="inclusivegateway1" name="Exclusive Gateway" default="three"></inclusiveGateway>
+    <scriptTask id="scripttask1" name="one" scriptFormat="groovy">
+      <script><![CDATA[out:println "one";]]></script>
+    </scriptTask>
+    <scriptTask id="scripttask2" name="two">
+      <script></script>
+    </scriptTask>
+    <scriptTask id="scripttask3" name="three" scriptFormat="groovy">
+      <script><![CDATA[out:println "three";]]></script>
+    </scriptTask>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="inclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="one" name="" sourceRef="inclusivegateway1" targetRef="scripttask1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${way == 'one'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="two" name="" sourceRef="inclusivegateway1" targetRef="scripttask2">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${way == 'two'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="three" name="" sourceRef="inclusivegateway1" targetRef="scripttask3">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${way == 'three'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow5" name="" sourceRef="scripttask3" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow6" name="" sourceRef="scripttask2" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow7" name="" sourceRef="scripttask1" targetRef="endevent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_InclusiveGatewayDefalutWay">
+    <bpmndi:BPMNPlane bpmnElement="InclusiveGatewayDefalutWay" id="BPMNPlane_InclusiveGatewayDefalutWay">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35" width="35" x="60" y="140"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="inclusivegateway1" id="BPMNShape_inclusivegateway1">
+        <omgdc:Bounds height="40" width="40" x="140" y="137"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55" width="105" x="230" y="50"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask2" id="BPMNShape_scripttask2">
+        <omgdc:Bounds height="55" width="105" x="225" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask3" id="BPMNShape_scripttask3">
+        <omgdc:Bounds height="55" width="105" x="219" y="220"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="430" y="150"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="95" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="140" y="157"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="one" id="BPMNEdge_one">
+        <omgdi:waypoint x="160" y="137"></omgdi:waypoint>
+        <omgdi:waypoint x="282" y="105"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="12" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="two" id="BPMNEdge_two">
+        <omgdi:waypoint x="180" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="225" y="157"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="12" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="three" id="BPMNEdge_three">
+        <omgdi:waypoint x="160" y="177"></omgdi:waypoint>
+        <omgdi:waypoint x="271" y="220"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="12" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="271" y="220"></omgdi:waypoint>
+        <omgdi:waypoint x="447" y="185"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="330" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="430" y="167"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="335" y="77"></omgdi:waypoint>
+        <omgdi:waypoint x="447" y="77"></omgdi:waypoint>
+        <omgdi:waypoint x="447" y="150"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

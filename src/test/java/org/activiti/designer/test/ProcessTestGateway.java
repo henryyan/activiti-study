@@ -28,7 +28,7 @@ public class ProcessTestGateway {
 	@Test
 	public void startProcess() throws Exception {
 		RepositoryService repositoryService = activitiRule.getRepositoryService();
-		repositoryService.createDeployment().addInputStream("process1.bpmn20.xml", new FileInputStream(filename)).deploy();
+		repositoryService.createDeployment().addClasspathResource("diagrams/Gateway.bpmn").deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("name", "Activiti");

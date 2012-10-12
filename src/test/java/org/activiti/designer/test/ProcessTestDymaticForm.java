@@ -20,6 +20,8 @@ import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.form.TaskFormData;
 import org.activiti.engine.history.HistoricDetail;
+import org.activiti.engine.impl.persistence.entity.HistoricFormPropertyEntity;
+import org.activiti.engine.impl.persistence.entity.HistoricVariableUpdateEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -92,5 +94,16 @@ public class ProcessTestDymaticForm {
 		assertEquals(1, formProperties2.size());
 		assertNotNull(formProperties2.get(0).getValue());
 		assertEquals(formProperties2.get(0).getValue(), "01/12/2012");
+		
+		List<HistoricDetail> details = historyService.createHistoricDetailQuery().processInstanceId(processInstance.getId()).list();
+		for (HistoricDetail historicDetail : details) {
+			if (historicDetail instanceof HistoricFormPropertyEntity) {
+				HistoricFormPropertyEntity formEntity = (HistoricFormPropertyEntity) historicDetail;
+				System.out.println(String.format("form->, key: %s, value: %s", formEntity.getPropertyId(), formEntity.getPropertyValue()));
+			} else if (historicDetail instanceof HistoricVariableUpdateEntity) {
+				HistoricVariableUpdateEntity varEntity = (HistoricVariableUpdateEntity) historicDetail;
+				System.out.println(String.format("variable->, key: %s, value: %s", varEntity.getName(), varEntity.getValue()));
+			}
+		}
 	}
 }
