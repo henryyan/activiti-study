@@ -2,7 +2,6 @@ package org.activiti.designer.test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +22,7 @@ import org.activiti.engine.impl.task.TaskDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.ActivitiRule;
+import org.activiti.engine.test.Deployment;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,15 +34,12 @@ import org.junit.Test;
  */
 public class ProcessTestAutoAssignee {
 
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/AutoAssignee.bpmn";
-
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();
 
   @Test
+  @Deployment(resources = { "diagrams/AutoAssignee.bpmn" })
   public void startProcess() throws Exception {
-    RepositoryService repositoryService = activitiRule.getRepositoryService();
-    repositoryService.createDeployment().addInputStream("AutoAssignee.bpmn20.xml", new FileInputStream(filename)).deploy();
     RuntimeService runtimeService = activitiRule.getRuntimeService();
     Map<String, Object> variableMap = new HashMap<String, Object>();
     variableMap.put("name", "Activiti");
