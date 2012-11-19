@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.dreamsoft.net">
+  <process id="leave-sj" name="三井请假流程（试用）" isExecutable="true">
+    <documentation>三井请假流程（试用）</documentation>
+    <startEvent id="startevent1" name="请假开始" activiti:initiator="applyUserId"></startEvent>
+    <userTask id="groupLeaderAudit" name="组长审批" activiti:candidateGroups="groupLeader"></userTask>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="groupLeaderAudit"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow2" name="" sourceRef="groupLeaderAudit" targetRef="exclusivegateway1"></sequenceFlow>
+    <userTask id="masterAudit" name="校长审批" activiti:candidateGroups="master"></userTask>
+    <sequenceFlow id="flow4" name="同意（一天以上）" sourceRef="exclusivegateway1" targetRef="masterAudit">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${groupLeaderPassGtOneDay}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow6" name="" sourceRef="masterAudit" targetRef="exclusivegateway2"></sequenceFlow>
+    <userTask id="modifyApply" name="请假调整" activiti:assignee="${applyUserId}">
+      <extensionElements>
+        <activiti:taskListener event="complete" delegateExpression="${afterModifyApplyContentProcessor}"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow8" name="不同意" sourceRef="exclusivegateway1" targetRef="modifyApply">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[!${groupLeaderPass}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow9" name="不同意" sourceRef="exclusivegateway2" targetRef="modifyApply">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[!${masterPass}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow10" name="" sourceRef="modifyApply" targetRef="exclusivegateway3"></sequenceFlow>
+    <userTask id="reportBack" name="销假" activiti:assignee="${applyUserId}"></userTask>
+    <sequenceFlow id="flow11" name="同意（一天以内）" sourceRef="exclusivegateway1" targetRef="reportBack">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${groupLeaderPassOneDay}]]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="endevent1" name="请假结束"></endEvent>
+    <sequenceFlow id="flow12" name="销假" sourceRef="reportBack" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow13" name="同意" sourceRef="exclusivegateway2" targetRef="reportBack">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${masterPass}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow14" name="取消请假" sourceRef="exclusivegateway3" targetRef="endevent1">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[!${reApply}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow15" name="重新请假" sourceRef="exclusivegateway3" targetRef="groupLeaderAudit">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reApply}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_leave-sj">
+    <bpmndi:BPMNPlane bpmnElement="leave-sj" id="BPMNPlane_leave-sj">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35" width="35" x="40" y="173"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="groupLeaderAudit" id="BPMNShape_groupLeaderAudit">
+        <omgdc:Bounds height="55" width="105" x="120" y="163"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40" width="40" x="280" y="170"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="masterAudit" id="BPMNShape_masterAudit">
+        <omgdc:Bounds height="55" width="105" x="248" y="293"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
+        <omgdc:Bounds height="40" width="40" x="460" y="300"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="modifyApply" id="BPMNShape_modifyApply">
+        <omgdc:Bounds height="55" width="105" x="248" y="43"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">
+        <omgdc:Bounds height="40" width="40" x="408" y="50"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reportBack" id="BPMNShape_reportBack">
+        <omgdc:Bounds height="55" width="105" x="525" y="163"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="560" y="53"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="75" y="190"></omgdi:waypoint>
+        <omgdi:waypoint x="120" y="190"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="225" y="190"></omgdi:waypoint>
+        <omgdi:waypoint x="280" y="190"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="300" y="210"></omgdi:waypoint>
+        <omgdi:waypoint x="300" y="293"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="42" width="100" x="-49" y="-28"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="353" y="320"></omgdi:waypoint>
+        <omgdi:waypoint x="460" y="320"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="300" y="170"></omgdi:waypoint>
+        <omgdi:waypoint x="300" y="98"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-38" y="-1"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="480" y="300"></omgdi:waypoint>
+        <omgdi:waypoint x="449" y="114"></omgdi:waypoint>
+        <omgdi:waypoint x="300" y="98"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-39" y="-24"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="353" y="70"></omgdi:waypoint>
+        <omgdi:waypoint x="408" y="70"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="320" y="190"></omgdi:waypoint>
+        <omgdi:waypoint x="525" y="190"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="42" width="100" x="-61" y="-27"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="577" y="163"></omgdi:waypoint>
+        <omgdi:waypoint x="577" y="88"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="2" y="-5"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="500" y="320"></omgdi:waypoint>
+        <omgdi:waypoint x="577" y="319"></omgdi:waypoint>
+        <omgdi:waypoint x="577" y="218"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-24" y="-39"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
+        <omgdi:waypoint x="448" y="70"></omgdi:waypoint>
+        <omgdi:waypoint x="560" y="70"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-24" y="-17"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
+        <omgdi:waypoint x="428" y="50"></omgdi:waypoint>
+        <omgdi:waypoint x="427" y="23"></omgdi:waypoint>
+        <omgdi:waypoint x="172" y="23"></omgdi:waypoint>
+        <omgdi:waypoint x="172" y="163"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-53" y="7"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

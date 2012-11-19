@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn20">
+  <process id="multiSubProcess1" name="多实例串行子流程">
+    <extensionElements>
+      <activiti:executionListener event="start" class="com.zrar.blh.activiti.MyListener"></activiti:executionListener>
+      <activiti:executionListener event="end" class="com.zrar.blh.activiti.MyListener"></activiti:executionListener>
+    </extensionElements>
+    <startEvent id="StartEvent1" name="开始" activiti:initiator="startUser"></startEvent>
+    <endEvent id="EndEvent1" name="结束1"></endEvent>
+    <userTask id="UserTask1" name="用户任务1">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        <activiti:taskListener event="assignment" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <userTask id="UserTask2" name="用户任务2">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        <activiti:taskListener event="assignment" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <subProcess id="SubProcess1" name="子流程1">
+    <extensionElements>
+      <activiti:executionListener event="start" class="com.zrar.blh.activiti.MyListener"></activiti:executionListener>
+      <activiti:executionListener event="end" class="com.zrar.blh.activiti.MyListener"></activiti:executionListener>
+    </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="${taskUserAssignService.getMultipleUser(execution)}" activiti:elementVariable="assignee"></multiInstanceLoopCharacteristics>
+      <startEvent id="StartEvent2" name="开始" activiti:initiator="startUser"></startEvent>
+      <endEvent id="EndEvent2" name="结束2"></endEvent>
+      <userTask id="UserTask3" name="用户任务3">
+        <extensionElements>
+          <activiti:taskListener event="create" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+          <activiti:taskListener event="assignment" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+          <activiti:taskListener event="complete" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        </extensionElements>
+      </userTask>
+      <userTask id="UserTask4" name="用户任务4">
+        <extensionElements>
+          <activiti:taskListener event="create" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+          <activiti:taskListener event="assignment" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+          <activiti:taskListener event="complete" class="com.zrar.blh.activiti.MyListener"></activiti:taskListener>
+        </extensionElements>
+      </userTask>
+      <sequenceFlow id="sequenceFlow1" name="" sourceRef="StartEvent2" targetRef="UserTask3"></sequenceFlow>
+      <sequenceFlow id="sequenceFlow2" name="" sourceRef="UserTask3" targetRef="UserTask4"></sequenceFlow>
+      <sequenceFlow id="sequenceFlow3" name="" sourceRef="UserTask4" targetRef="EndEvent2"></sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="sequenceFlow4" name="" sourceRef="StartEvent1" targetRef="UserTask1"></sequenceFlow>
+    <sequenceFlow id="sequenceFlow5" name="" sourceRef="UserTask1" targetRef="SubProcess1"></sequenceFlow>
+    <sequenceFlow id="sequenceFlow6" name="" sourceRef="SubProcess1" targetRef="UserTask2"></sequenceFlow>
+    <sequenceFlow id="sequenceFlow7" name="" sourceRef="UserTask2" targetRef="EndEvent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_multiSubProcess1">
+    <bpmndi:BPMNPlane bpmnElement="multiSubProcess1" id="BPMNPlane_multiSubProcess1">
+      <bpmndi:BPMNShape bpmnElement="StartEvent1" id="BPMNShape_StartEvent1">
+        <omgdc:Bounds height="35" width="35" x="-200" y="340"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndEvent1" id="BPMNShape_EndEvent1">
+        <omgdc:Bounds height="35" width="35" x="1150" y="339"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="UserTask1" id="BPMNShape_UserTask1">
+        <omgdc:Bounds height="50" width="90" x="30" y="331"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="UserTask2" id="BPMNShape_UserTask2">
+        <omgdc:Bounds height="50" width="90" x="940" y="331"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="SubProcess1" id="BPMNShape_SubProcess1" isExpanded="true">
+        <omgdc:Bounds height="350" width="540" x="280" y="180"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="StartEvent2" id="BPMNShape_StartEvent2">
+        <omgdc:Bounds height="35" width="35" x="350" y="251"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndEvent2" id="BPMNShape_EndEvent2">
+        <omgdc:Bounds height="35" width="35" x="410" y="471"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="UserTask3" id="BPMNShape_UserTask3">
+        <omgdc:Bounds height="50" width="90" x="321" y="361"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="UserTask4" id="BPMNShape_UserTask4">
+        <omgdc:Bounds height="50" width="90" x="590" y="351"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow1" id="BPMNEdge_sequenceFlow1">
+        <omgdi:waypoint x="367" y="286"></omgdi:waypoint>
+        <omgdi:waypoint x="366" y="322"></omgdi:waypoint>
+        <omgdi:waypoint x="366" y="322"></omgdi:waypoint>
+        <omgdi:waypoint x="366" y="361"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow2" id="BPMNEdge_sequenceFlow2">
+        <omgdi:waypoint x="411" y="386"></omgdi:waypoint>
+        <omgdi:waypoint x="500" y="386"></omgdi:waypoint>
+        <omgdi:waypoint x="500" y="376"></omgdi:waypoint>
+        <omgdi:waypoint x="590" y="376"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow3" id="BPMNEdge_sequenceFlow3">
+        <omgdi:waypoint x="635" y="401"></omgdi:waypoint>
+        <omgdi:waypoint x="635" y="488"></omgdi:waypoint>
+        <omgdi:waypoint x="445" y="488"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow4" id="BPMNEdge_sequenceFlow4">
+        <omgdi:waypoint x="-165" y="357"></omgdi:waypoint>
+        <omgdi:waypoint x="-68" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="-68" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="30" y="356"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow5" id="BPMNEdge_sequenceFlow5">
+        <omgdi:waypoint x="120" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="200" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="200" y="355"></omgdi:waypoint>
+        <omgdi:waypoint x="280" y="355"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow6" id="BPMNEdge_sequenceFlow6">
+        <omgdi:waypoint x="820" y="355"></omgdi:waypoint>
+        <omgdi:waypoint x="880" y="355"></omgdi:waypoint>
+        <omgdi:waypoint x="880" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="940" y="356"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow7" id="BPMNEdge_sequenceFlow7">
+        <omgdi:waypoint x="1030" y="356"></omgdi:waypoint>
+        <omgdi:waypoint x="1150" y="356"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,13 +1,12 @@
 package org.activiti.designer.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.FileInputStream;
 
-import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -20,8 +19,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 public class ProcessTestGateway {
-
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Gateway.bpmn";
 
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();
