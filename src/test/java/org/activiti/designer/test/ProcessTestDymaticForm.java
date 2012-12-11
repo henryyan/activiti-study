@@ -20,8 +20,8 @@ import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.form.TaskFormData;
 import org.activiti.engine.history.HistoricDetail;
+import org.activiti.engine.history.HistoricVariableUpdate;
 import org.activiti.engine.impl.persistence.entity.HistoricFormPropertyEntity;
-import org.activiti.engine.impl.persistence.entity.HistoricVariableUpdateEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -100,9 +100,9 @@ public class ProcessTestDymaticForm {
 			if (historicDetail instanceof HistoricFormPropertyEntity) {
 				HistoricFormPropertyEntity formEntity = (HistoricFormPropertyEntity) historicDetail;
 				System.out.println(String.format("form->, key: %s, value: %s", formEntity.getPropertyId(), formEntity.getPropertyValue()));
-			} else if (historicDetail instanceof HistoricVariableUpdateEntity) {
-				HistoricVariableUpdateEntity varEntity = (HistoricVariableUpdateEntity) historicDetail;
-				System.out.println(String.format("variable->, key: %s, value: %s", varEntity.getName(), varEntity.getValue()));
+			} else if (historicDetail instanceof HistoricVariableUpdate) {
+				HistoricVariableUpdate varEntity = (HistoricVariableUpdate) historicDetail;
+				System.out.println(String.format("variable->, key: %s, value: %s", varEntity.getVariableName(), varEntity.getValue()));
 			}
 		}
 	}

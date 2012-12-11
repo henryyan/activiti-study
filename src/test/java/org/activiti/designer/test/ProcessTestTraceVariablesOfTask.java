@@ -13,7 +13,7 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricDetail;
-import org.activiti.engine.impl.persistence.entity.HistoricVariableUpdateEntity;
+import org.activiti.engine.history.HistoricVariableUpdate;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.ActivitiRule;
@@ -64,7 +64,7 @@ public class ProcessTestTraceVariablesOfTask {
     HistoryService historyService = activitiRule.getHistoryService();
     List<HistoricDetail> list = historyService.createHistoricDetailQuery().processInstanceId(processInstance.getId()).list();
     for (HistoricDetail historicDetail : list) {
-      HistoricVariableUpdateEntity variable = (HistoricVariableUpdateEntity) historicDetail;
+      HistoricVariableUpdate variable = (HistoricVariableUpdate) historicDetail;
       // System.out.println(variable.getName() + " = " + variable.getValue());
       String activityInstanceId = variable.getActivityInstanceId();
 
@@ -75,7 +75,7 @@ public class ProcessTestTraceVariablesOfTask {
         activiy_name_value.put(activityInstanceId, tempVariableMap);
       }
 
-      tempVariableMap.put(variable.getName(), variable.getValue());
+      tempVariableMap.put(variable.getVariableName(), variable.getValue());
 
     }
 

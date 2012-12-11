@@ -149,4 +149,8 @@ public class PreParseListener implements BpmnParseListener {
 	public void parseBoundaryEvent(Element boundaryEventElement, ScopeImpl scopeElement, ActivityImpl nestedActivity) {
 	}
 
+  @Override
+  public void parseBoundaryMessageEventDefinition(Element element, boolean interrupting, ActivityImpl messageActivity) {
+  }
+
 }

@@ -12,7 +12,7 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.history.HistoricDetail;
-import org.activiti.engine.impl.persistence.entity.HistoricVariableUpdateEntity;
+import org.activiti.engine.history.HistoricVariableUpdate;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
@@ -72,10 +72,10 @@ public class ProcessTestDrools {
 		List<HistoricDetail> list = historyService.createHistoricDetailQuery()
 				.processInstanceId(processInstance.getId()).list();
 		for (HistoricDetail historicDetail : list) {
-			HistoricVariableUpdateEntity variableDetail = (HistoricVariableUpdateEntity) historicDetail;
-			System.out.println(variableDetail.getName() + " = "
+			HistoricVariableUpdate variableDetail = (HistoricVariableUpdate) historicDetail;
+			System.out.println(variableDetail.getVariableName() + " = "
 					+ variableDetail.getValue());
-			if (variableDetail.getName().equals("rulesOutput")) {
+			if (variableDetail.getVariableName().equals("rulesOutput")) {
 				@SuppressWarnings("unchecked")
 				List<Object> varList = (List<Object>) variableDetail.getValue();
 				assertEquals(1, varList.size());

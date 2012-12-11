@@ -11,7 +11,7 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.history.HistoricDetail;
-import org.activiti.engine.impl.persistence.entity.HistoricVariableUpdateEntity;
+import org.activiti.engine.history.HistoricVariableUpdate;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
@@ -38,8 +38,8 @@ public class ProcessTestHistoricVariable {
 		HistoryService historyService = activitiRule.getHistoryService();
 		List<HistoricDetail> list = historyService.createHistoricDetailQuery().processInstanceId(processInstance.getId()).list();
 		for (HistoricDetail historicDetail : list) {
-			HistoricVariableUpdateEntity variable = (HistoricVariableUpdateEntity) historicDetail;
-			System.out.println(variable.getName() + " = " + variable.getValue());
+			HistoricVariableUpdate variable = (HistoricVariableUpdate) historicDetail;
+			System.out.println(variable.getVariableName() + " = " + variable.getValue());
 		}
 	}
 }
