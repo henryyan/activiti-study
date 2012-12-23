@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class ProcessTestStatus {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MyProcess.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Gateway.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
@@ -28,7 +28,7 @@ public class ProcessTestStatus {
 		repositoryService.createDeployment().addInputStream("process1.bpmn20.xml", new FileInputStream(filename)).deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
 		Map<String, Object> variableMap = new HashMap<String, Object>();
-		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("process1", variableMap);
+		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("gateway", variableMap);
 		assertNotNull(processInstance.getId());
 		System.out.println("id " + processInstance.getId() + " " + processInstance.getProcessDefinitionId());
 
