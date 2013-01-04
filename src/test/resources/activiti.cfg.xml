@@ -19,10 +19,13 @@
 				<bean class="org.activiti.engine.impl.rules.RulesDeployer" />
 			</list>
 		</property>
-		<!-- <property name="beans">
+		<property name="beans">
 			<map>
-				<entry key="muleContext" value-ref="_muleContext" />
+				<!-- <entry key="muleContext" value-ref="_muleContext" /> -->
+				<entry key="getFieldOfTaskListener" value-ref="getFieldOfTaskListener" />
 			</map>
-		</property> -->
+		</property>
 	</bean>
+	
+	<bean id="getFieldOfTaskListener" class="me.kafeitu.activiti.listener.GetFieldOfTaskListener" />
 </beans>
