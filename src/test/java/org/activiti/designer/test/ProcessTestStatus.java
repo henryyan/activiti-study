@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class ProcessTestStatus {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Gateway.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/Gateway.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

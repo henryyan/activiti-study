@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestListenerByVariable {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ListenerByVariable.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ListenerByVariable.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

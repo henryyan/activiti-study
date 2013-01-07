@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class ProcessTestXiaomage {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/xiaomage.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/xiaomage.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestEventGateway {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/EventGateway.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/EventGateway.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiListenerOnStart {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiListenerOnStart.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/MultiListenerOnStart.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

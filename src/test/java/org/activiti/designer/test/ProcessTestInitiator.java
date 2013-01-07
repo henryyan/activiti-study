@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class ProcessTestInitiator {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/initiator.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/initiator.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

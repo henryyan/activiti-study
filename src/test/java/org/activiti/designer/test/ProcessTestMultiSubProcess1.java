@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiSubProcess1 {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/multiSubProcess1.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/multiSubProcess1.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

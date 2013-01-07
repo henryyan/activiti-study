@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestEmailTask {
 
-	private static String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/EmailTaskUseGmail.bpmn";
+	private static String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/EmailTaskUseGmail.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

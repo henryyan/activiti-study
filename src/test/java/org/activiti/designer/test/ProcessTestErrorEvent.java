@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class ProcessTestErrorEvent {
 
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ErrorEvent.bpmn";
+  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ErrorEvent.bpmn";
 
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();

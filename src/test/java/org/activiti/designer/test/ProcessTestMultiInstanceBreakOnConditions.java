@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiInstanceBreakOnConditions {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiInstanceBreakOnConditions.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/MultiInstanceBreakOnConditions.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

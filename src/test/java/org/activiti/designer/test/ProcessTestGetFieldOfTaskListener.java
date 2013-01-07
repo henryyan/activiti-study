@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestGetFieldOfTaskListener {
 
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/qun/GetFieldOfTaskListener.bpmn";
+  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/qun/GetFieldOfTaskListener.bpmn";
 
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();

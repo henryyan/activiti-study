@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestLeave {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/leave.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/leave.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -22,7 +22,7 @@ import org.junit.Test;
 
 public class ProcessTestOwner {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Attachment.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/Attachment.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

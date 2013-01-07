@@ -17,7 +17,7 @@ import com.sample.Printer;
 
 public class ProcessTestExpression {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/expression.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/expression.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

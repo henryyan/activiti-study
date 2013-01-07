@@ -22,8 +22,8 @@ import com.sample.DroolsTest.Message;
 
 public class ProcessTestDrools {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/drools.bpmn";
-	private String ruleFile = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/rules/hello.drl";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/drools.bpmn";
+	private String ruleFile = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/rules/hello.drl";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

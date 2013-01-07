@@ -18,7 +18,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiInstanceUseAssigneeList {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiInstanceUseAssigneeList.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/MultiInstanceUseAssigneeList.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

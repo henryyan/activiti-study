@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class ProcessTestUserTaskBpmnAssignee {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/UserTaskBpmnAssignee.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/UserTaskBpmnAssignee.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

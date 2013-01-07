@@ -18,7 +18,7 @@ import org.junit.Test;
 
 public class ProcessTestBilling {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/billing.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/billing.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

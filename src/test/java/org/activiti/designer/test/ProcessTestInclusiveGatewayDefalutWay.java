@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestInclusiveGatewayDefalutWay {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/InclusiveGatewayDefalutWay.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/InclusiveGatewayDefalutWay.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

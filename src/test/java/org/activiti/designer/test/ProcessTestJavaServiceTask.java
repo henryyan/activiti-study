@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestJavaServiceTask {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/JavaServiceTask.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/JavaServiceTask.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

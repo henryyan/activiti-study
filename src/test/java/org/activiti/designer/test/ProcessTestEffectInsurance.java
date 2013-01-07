@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestEffectInsurance {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/joying/effectInsurance.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/joying/effectInsurance.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -19,10 +19,10 @@ import org.junit.Test;
 
 public class ProcessTestSignalIntermediateCatchEvent {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/SignalIntermediateCatchEvent.bpmn";
-	private String filename1 = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/SignalIntermediateCatchEvent1.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/SignalIntermediateCatchEvent.bpmn";
+	private String filename1 = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/SignalIntermediateCatchEvent1.bpmn";
 
-	private String filenameForThrow = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/SignalIntermediateThrowEvent.bpmn";
+	private String filenameForThrow = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/SignalIntermediateThrowEvent.bpmn";
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
 

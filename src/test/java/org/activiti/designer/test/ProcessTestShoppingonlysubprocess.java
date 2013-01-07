@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class ProcessTestShoppingonlysubprocess {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/shopping-only-subprocess.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/shopping-only-subprocess.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

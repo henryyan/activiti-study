@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestExclusiveGateway {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ExclusiveGateway.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ExclusiveGateway.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

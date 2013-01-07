@@ -24,7 +24,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiInstance {
 
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiInstance.bpmn";
+  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/MultiInstance.bpmn";
 
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();

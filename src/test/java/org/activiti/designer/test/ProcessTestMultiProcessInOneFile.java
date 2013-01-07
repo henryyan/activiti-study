@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class ProcessTestMultiProcessInOneFile {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/MultiProcessInOneFile.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/MultiProcessInOneFile.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

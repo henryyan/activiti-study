@@ -19,7 +19,7 @@ import org.activiti.engine.task.Task;
 
 public class ProcessTestTimeBoundaryEvent {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/TimeBoundaryEvent.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/TimeBoundaryEvent.bpmn";
 
 	public void startProcessWithJob() throws Exception {
 		ProcessEngineConfiguration createStandaloneInMemProcessEngineConfiguration = StandaloneInMemProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();

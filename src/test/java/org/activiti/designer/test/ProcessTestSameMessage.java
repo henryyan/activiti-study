@@ -12,8 +12,8 @@ import org.junit.Test;
 
 public class ProcessTestSameMessage {
 
-  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Message1.bpmn";
-  private String filename2 = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/Message2.bpmn";
+  private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/Message1.bpmn";
+  private String filename2 = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/Message2.bpmn";
 
   @Rule
   public ActivitiRule activitiRule = new ActivitiRule();

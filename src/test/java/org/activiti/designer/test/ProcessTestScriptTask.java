@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestScriptTask {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ScriptTask.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ScriptTask.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -20,7 +20,7 @@ import org.junit.Test;
 
 public class ProcessTestReciveTask {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ReciveTask.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ReciveTask.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

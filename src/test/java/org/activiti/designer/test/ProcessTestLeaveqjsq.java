@@ -20,7 +20,7 @@ import org.junit.Test;
 
 public class ProcessTestLeaveqjsq {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/qun/qjsq.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/qun/qjsq.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

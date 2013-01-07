@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class ProcessTestJpdl {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/jpdl/helloworld.jpdl.xml";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/jpdl/helloworld.jpdl.xml";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

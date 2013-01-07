@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestSequenceFlowWithCondition {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/bugs/SequenceFlowWithCondition.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/bugs/SequenceFlowWithCondition.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

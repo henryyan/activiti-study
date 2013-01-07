@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class ProcessTestNoneIntermediateThrowEvent {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/NoneIntermediateThrowEvent.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/NoneIntermediateThrowEvent.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

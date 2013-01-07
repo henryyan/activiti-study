@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestDeleteInstance {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/DeleteInstance.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/DeleteInstance.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

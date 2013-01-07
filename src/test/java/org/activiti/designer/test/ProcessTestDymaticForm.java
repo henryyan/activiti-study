@@ -32,7 +32,7 @@ import org.junit.Test;
 
 public class ProcessTestDymaticForm {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/form/DymaticForm.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/form/DymaticForm.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

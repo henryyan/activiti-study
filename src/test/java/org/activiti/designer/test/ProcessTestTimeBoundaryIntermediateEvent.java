@@ -22,7 +22,7 @@ import org.junit.Test;
 
 public class ProcessTestTimeBoundaryIntermediateEvent {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/TimeBoundaryIntermediateEvent.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/TimeBoundaryIntermediateEvent.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class ProcessTestErrorStart {
 
-	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/main/resources/diagrams/ErrorEventAndRerun.bpmn";
+	private String filename = "/Users/henryyan/work/projects/activiti/activiti-study/src/test/resources/diagrams/ErrorEventAndRerun.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
