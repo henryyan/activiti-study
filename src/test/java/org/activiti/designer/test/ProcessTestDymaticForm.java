@@ -105,5 +105,8 @@ public class ProcessTestDymaticForm {
 				System.out.println(String.format("variable->, key: %s, value: %s", varEntity.getVariableName(), varEntity.getValue()));
 			}
 		}
+		
+		long count = historyService.createHistoricDetailQuery().count();
+		System.out.println(count);
 	}
 }
