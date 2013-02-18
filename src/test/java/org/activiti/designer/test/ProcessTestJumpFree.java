@@ -1,10 +1,11 @@
 package org.activiti.designer.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.FileInputStream;
 
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
