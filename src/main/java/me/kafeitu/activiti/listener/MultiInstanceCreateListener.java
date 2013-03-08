@@ -5,7 +5,9 @@ import org.activiti.engine.delegate.TaskListener;
 
 public class MultiInstanceCreateListener implements TaskListener {
 
-	@Override
+	private static final long serialVersionUID = 1L;
+
+  @Override
 	public void notify(DelegateTask delegateTask) {
 		System.out.println(String.format("nrOfInstances=%s", delegateTask.getVariable("nrOfInstances")));
 		System.out.println(String.format("nrOfActiveInstances=%s", delegateTask.getVariable("nrOfActiveInstances")));

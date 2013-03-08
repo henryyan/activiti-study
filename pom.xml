@@ -7,7 +7,7 @@
 	<packaging>jar</packaging>
 	<name>BPMN 2.0 with Activiti - Examples</name>
 	<properties>
-		<activiti-version>5.11</activiti-version>
+		<activiti-version>5.12</activiti-version>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
-			<version>${activiti-version}</version>
+			<version>5.12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.activiti</groupId>
@@ -148,7 +148,6 @@
 			<version>1.4.3</version>
 		</dependency>
 
-
 		<!-- log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -157,6 +156,10 @@
 		</dependency>
 	</dependencies>
 	<repositories>
+		<repository>
+			<id>henryyan-mavenrepo</id>
+			<url>https://raw.github.com/henryyan/mavenrepo/master/releases</url>
+		</repository>
 		<repository>
 			<id>Activiti</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public</url>

@@ -5,7 +5,9 @@ import org.activiti.engine.delegate.ExecutionListener;
 
 public class CreateUserTaskCustomer implements ExecutionListener {
 
-	public void hello(String eventName) {
+	private static final long serialVersionUID = 1L;
+
+  public void hello(String eventName) {
 		System.out.println("hello " + eventName);
 	}
 

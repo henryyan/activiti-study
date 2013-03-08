@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetFieldOfTaskListener implements TaskListener {
   
+  private static final long serialVersionUID = 1L;
   private Expression name;
 
   @Override

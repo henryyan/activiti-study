@@ -10,7 +10,9 @@ import org.activiti.engine.delegate.ExecutionListener;
  */
 public class CreateManualTaskListener implements ExecutionListener {
 
-	@Override
+	private static final long serialVersionUID = 1L;
+
+  @Override
 	public void notify(DelegateExecution execution) throws Exception {
 		System.out.println("on " + execution.getEventName() + " " + execution.getProcessInstanceId());
 	}
