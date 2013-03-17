@@ -45,10 +45,14 @@ public class ProcessTestDelegateTask {
 		// 签收
 		taskService.claim(task.getId(), "user1");
 		task = taskService.createTaskQuery().singleResult();
+		assertNull(task.getOwner());
 		assertNotNull(task.getAssignee());
 
 		// 委派
 		taskService.delegateTask(task.getId(), "henryyan");
+		
+		task = taskService.createTaskQuery().singleResult();
+		assertEquals("user1", task.getOwner());
 
 		// 查询被委派的任务
 		task = taskService.createTaskQuery().taskAssignee("henryyan").taskDelegationState(DelegationState.PENDING).singleResult();
