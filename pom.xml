@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
-			<version>5.12.1</version>
+			<version>${activiti-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.activiti</groupId>
