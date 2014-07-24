@@ -19,8 +19,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class AutoSkipTaskEventListener implements ActivitiEventListener {
     @Override
     public void onEvent(ActivitiEvent event) {
-        if (event.getType().equals(ActivitiEventType.TASK_CREATED)
-                || event.getType().equals(ActivitiEventType.TASK_ASSIGNED)) {
+        if (event.getType().equals(ActivitiEventType.TASK_ASSIGNED)) {
             ActivitiEntityEvent entityEvent = (ActivitiEntityEvent) event;
 
             Object entity = entityEvent.getEntity();
