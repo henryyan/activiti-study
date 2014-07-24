@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.activiti:activiti-spring:5.16">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-spring/5.16/activiti-spring-5.16.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-spring/5.16/activiti-spring-5.16-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-spring/5.16/activiti-spring-5.16-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

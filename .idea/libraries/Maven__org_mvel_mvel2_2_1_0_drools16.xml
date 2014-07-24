@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mvel:mvel2:2.1.0.drools16">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mvel/mvel2/2.1.0.drools16/mvel2-2.1.0.drools16.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mvel/mvel2/2.1.0.drools16/mvel2-2.1.0.drools16-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mvel/mvel2/2.1.0.drools16/mvel2-2.1.0.drools16-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

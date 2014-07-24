@@ -12,7 +12,7 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.TaskQuery;
 import org.activiti.engine.test.ActivitiRule;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Rule;
 import org.junit.Test;
 

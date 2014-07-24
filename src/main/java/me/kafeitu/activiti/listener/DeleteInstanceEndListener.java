@@ -2,7 +2,7 @@ package me.kafeitu.activiti.listener;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class DeleteInstanceEndListener implements ExecutionListener {
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions" 
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="Examples">
+  
+  <process id="asyncSimpleServiceTask">
+  
+    <startEvent id="theStart" />
+    
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="task" />
+  
+    <serviceTask id="task" name="Task in subprocess" 
+      activiti:class="org.activiti.engine.test.bpmn.callactivity.SimpleServiceTask" 
+      activiti:async="true"/>
+    
+    <sequenceFlow id="flow2" sourceRef="task" targetRef="theEnd" />
+    
+    <endEvent id="theEnd" />
+    
+  </process>
+
+</definitions>

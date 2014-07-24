@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	#%L
+	Linux车道收费系统项目 车道核心收费
+	%%
+	Copyright (C) 2013 安徽皖通科技股份有限公司
+	%%
+	All rights reserved
+	#L%
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/jdbc		http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+	http://www.springframework.org/schema/util		http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="false">
+
+	<jdbc:embedded-database id="activitiDataSource" type="H2" />
+
+	<bean id="activitiTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="activitiDataSource" />
+	</bean>
+
+	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<property name="dataSource" ref="activitiDataSource" />
+		<property name="transactionManager" ref="activitiTransactionManager" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="jobExecutorActivate" value="true" />
+		<property name="deploymentResources" value="classpath*:/qun/innocent.y/test.bpmn" />
+	</bean>
+
+	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
+
+	<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
+	<bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
+	<bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
+	<bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
+	<bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
+
+	<bean id="activitiRule" class="org.activiti.engine.test.ActivitiRule">
+		<property name="processEngine" ref="processEngine" />
+	</bean>
+
+</beans>

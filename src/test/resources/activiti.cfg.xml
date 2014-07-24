@@ -23,9 +23,11 @@
 			<map>
 				<!-- <entry key="muleContext" value-ref="_muleContext" /> -->
 				<entry key="getFieldOfTaskListener" value-ref="getFieldOfTaskListener" />
+				<entry key="canComplete" value-ref="canComplete" />
 			</map>
 		</property>
 	</bean>
 	
 	<bean id="getFieldOfTaskListener" class="me.kafeitu.activiti.listener.GetFieldOfTaskListener" />
+	<bean id="canComplete" class="me.kafeitu.activiti.CanComplete" />
 </beans>
