@@ -79,12 +79,17 @@ public class AutoSkipTaskEventListener implements ActivitiEventListener {
                     for (IdentityLink identityLink : candidates) {
                         // 处理候选人
                         if (identityLink.getUserId() != null && identityLink.getUserId().equals(userId)) {
+                            // 必须删除link，否则报错
                             taskEntity.deleteUserIdentityLink(identityLink.getUserId(), "candidate");
+
+                            // 签收触发TASK_ASSIGNED
                             taskService.claim(taskEntity.getId(), userId);
                         } else if (groupIds.contains(identityLink.getGroupId())) {
-                            // 处理候选组
-                            taskService.claim(taskEntity.getId(), userId);
+                            // 必须删除link，否则报错
                             taskEntity.deleteGroupIdentityLink(identityLink.getGroupId(), "candidate");
+
+                            // 签收触发TASK_ASSIGNED
+                            taskService.claim(taskEntity.getId(), userId);
                         }
                     }
                 }
