@@ -2,18 +2,22 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="threeTask" name="My process" isExecutable="true">
     <startEvent id="startevent1" name="Start"></startEvent>
-    <userTask id="usertask1" name="User Task 1" activiti:assignee="user1"></userTask>
+    <userTask id="usertask1" name="user1的任务1" activiti:assignee="user1"></userTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
-    <userTask id="usertask2" name="User Task 2" activiti:assignee="user1"></userTask>
+    <userTask id="usertask2" name="user1的任务2" activiti:assignee="user1"></userTask>
     <sequenceFlow id="flow2" sourceRef="usertask1" targetRef="usertask2"></sequenceFlow>
-    <userTask id="usertask3" name="User Task 3" activiti:assignee="user2"></userTask>
+    <userTask id="usertask3" name="user2的任务" activiti:assignee="user2"></userTask>
     <sequenceFlow id="flow3" sourceRef="usertask2" targetRef="usertask3"></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
     <sequenceFlow id="flow4" sourceRef="usertask3" targetRef="usertask4"></sequenceFlow>
-    <userTask id="usertask4" name="User Task 4"></userTask>
-    <sequenceFlow id="flow5" sourceRef="usertask5" targetRef="endevent1"></sequenceFlow>
-    <userTask id="usertask5" name="User Task 5"></userTask>
+    <userTask id="usertask4" name="用代码设置assignee"></userTask>
+    <sequenceFlow id="flow5" sourceRef="usertask6" targetRef="usertask7"></sequenceFlow>
+    <userTask id="usertask5" name="使用候选人" activiti:candidateUsers="user1"></userTask>
     <sequenceFlow id="flow6" sourceRef="usertask4" targetRef="usertask5"></sequenceFlow>
+    <userTask id="usertask6" name="用候选组" activiti:candidateGroups="group1"></userTask>
+    <sequenceFlow id="flow7" sourceRef="usertask5" targetRef="usertask6"></sequenceFlow>
+    <userTask id="usertask7" name="目的地"></userTask>
+    <sequenceFlow id="flow8" sourceRef="usertask7" targetRef="endevent1"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_threeTask">
     <bpmndi:BPMNPlane bpmnElement="threeTask" id="BPMNPlane_threeTask">
@@ -30,13 +34,19 @@
         <omgdc:Bounds height="55.0" width="105.0" x="450.0" y="120.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="185.0" y="230.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="335.0" y="330.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="usertask4" id="BPMNShape_usertask4">
         <omgdc:Bounds height="55.0" width="105.0" x="450.0" y="220.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="usertask5" id="BPMNShape_usertask5">
         <omgdc:Bounds height="55.0" width="105.0" x="300.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask6" id="BPMNShape_usertask6">
+        <omgdc:Bounds height="55.0" width="105.0" x="150.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask7" id="BPMNShape_usertask7">
+        <omgdc:Bounds height="55.0" width="105.0" x="150.0" y="320.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="105.0" y="147.0"></omgdi:waypoint>
@@ -55,12 +65,20 @@
         <omgdi:waypoint x="502.0" y="220.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="300.0" y="247.0"></omgdi:waypoint>
-        <omgdi:waypoint x="220.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="202.0" y="275.0"></omgdi:waypoint>
+        <omgdi:waypoint x="202.0" y="320.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
         <omgdi:waypoint x="450.0" y="247.0"></omgdi:waypoint>
         <omgdi:waypoint x="405.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="300.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="255.0" y="347.0"></omgdi:waypoint>
+        <omgdi:waypoint x="335.0" y="347.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
