@@ -7,7 +7,7 @@
 		<property name="databaseSchemaUpdate" value="true" />
         <property name="typedEventListeners">
             <map>
-                <entry key="TASK_CREATED" >
+                <entry key="TASK_ASSIGNED" >
                     <list>
                         <!-- 自动跳过节点 -->
                         <bean class="me.kafeitu.activiti.events.AutoSkipTaskEventListener" />

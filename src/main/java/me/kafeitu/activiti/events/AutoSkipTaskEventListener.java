@@ -44,8 +44,9 @@ public class AutoSkipTaskEventListener implements ActivitiEventListener {
                     CompleteTaskCmd command = new CompleteTaskCmd(taskEntity.getId(), variables, true);
 
                     // 执行命令，直接完成当前任务
+                    System.out.println("准备跳过任务：" + taskDefinitionKey);
                     managementService.executeCommand(command);
-                    System.out.println("跳过任务：" + taskDefinitionKey);
+                    System.out.println("已跳过任务：" + taskDefinitionKey);
                 }
             }
         } else {
