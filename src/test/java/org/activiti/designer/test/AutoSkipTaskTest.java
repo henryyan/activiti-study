@@ -1,11 +1,14 @@
 package org.activiti.designer.test;
 
+import java.util.List;
+
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Comment;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.Deployment;
@@ -71,5 +74,8 @@ public class AutoSkipTaskTest {
         task = taskService.createTaskQuery().singleResult();
         // taskService.claim(task.getId(), "user1");
         assertEquals("目的地", task.getName());
+
+        List<Comment> processInstanceComments = taskService.getProcessInstanceComments(processInstance.getProcessInstanceId());
+        assertEquals(4, processInstanceComments.size());
     }
 }

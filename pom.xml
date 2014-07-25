@@ -9,8 +9,8 @@
 	<properties>
 		<activiti-version>5.16</activiti-version>
 		<spring.version>3.1.2.RELEASE</spring.version>
-		<slf4j.version>1.6.6</slf4j.version>
-		<log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
 		<mule-version>3.1.1</mule-version>
 	</properties>
 	<dependencies>
@@ -76,12 +76,28 @@
 			<version>1.4.3</version>
 		</dependency>
 
-		<!-- log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
+        <!-- LOGGING begin -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- LOGGING end -->
 	</dependencies>
 	<repositories>
 		<repository>

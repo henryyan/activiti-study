@@ -66,9 +66,8 @@ public class AutoSkipTaskEventListener implements ActivitiEventListener {
                 // 如果当前节点是需要跳过的，直接调用任务完成命令
                 if (event.getType().equals(ActivitiEventType.TASK_ASSIGNED)) {
                     if (userId != null) {
-                        ManagementService managementService = engineServices.getManagementService();
                         if (taskEntity.getAssignee().equals(userId)) {
-                            skipTask(taskEntity, managementService);
+                            skipTask(taskEntity, event);
                         }
                     }
                 }
@@ -99,7 +98,9 @@ public class AutoSkipTaskEventListener implements ActivitiEventListener {
         }
     }
 
-    private void skipTask(TaskEntity taskEntity, ManagementService managementService) {
+    private void skipTask(TaskEntity taskEntity, ActivitiEvent event) {
+        ManagementService managementService = event.getEngineServices().getManagementService();
+        TaskService taskService = event.getEngineServices().getTaskService();
         String taskDefinitionKey = taskEntity.getTaskDefinitionKey();
         if (skipedTasks.contains(taskDefinitionKey)) {
             return;
@@ -108,6 +109,8 @@ public class AutoSkipTaskEventListener implements ActivitiEventListener {
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("skip", true);
         CompleteTaskCmd command = new CompleteTaskCmd(taskEntity.getId(), variables, true);
+
+        taskService.addComment(taskEntity.getId(), taskEntity.getProcessInstanceId(), "自动跳过");
 
         // 执行命令，直接完成当前任务
 //        System.out.println("准备跳过任务：" + taskEntity.getName() + "-->" + taskDefinitionKey);
